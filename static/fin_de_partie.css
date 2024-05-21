@@ -1,0 +1,184 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #0064fb, #003078);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+.title-container {
+    background-color: #995522;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 15px;
+    border: 3px solid white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 30%; 
+    margin: auto; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.title-container h3 {
+    margin: 0;
+}
+
+.title-container h1,
+.title-container h3 {
+    margin: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+button {
+    margin: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.bouton-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.bouton-classement,
+.bouton-historique,
+.bouton-recommencer_une_partie {
+    border: none;
+    background: none;
+    color: inherit;
+    padding: 11px 30px;
+    cursor: pointer;
+    font: inherit;
+    border-radius: 15px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: padding 0.3s ease;
+}
+
+.bouton-classement,
+.bouton-historique,
+.bouton-recommencer_une_partie {
+    background-color: #c1743f;
+    color: white;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.75);
+}
+
+.bouton-classement:hover,
+.bouton-historique:hover,
+.bouton-recommencer_une_partie:hover {
+    background-color: #99dd22;
+    text-shadow: 8px 8px 20px rgba(0, 0, 0, 2);
+    padding: 12px 36px;
+}
+
+.bouton-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    padding: 10px;
+    background-color: #995522;
+}
+
+.bouton-section a:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.button-wrapper {
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    padding: 10px;
+    background-color: #995522;
+}
+
+.all {
+    border: 3px solid #ffffff;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: #c1743f;
+}
+
+  .text {
+    margin: 0;
+    color: #fec22a;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    padding: 10px;
+    background-color: #995522;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 50%; 
+    margin: auto; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.gagne {
+    color: #99dd22;
+}
+
+.perdu {
+    color: #d81b1b;
+}
+
+
+#deconnexion-btn button {
+    background-color: #d11111;
+    color: white;
+    border: none;
+    padding: 11px 30px;
+    border-radius: 15px;
+    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+}
+
+#deconnexion-btn button:hover {
+    background-color: #930e0e;
+    padding: 12px 36px;
+}
+
+#deconnexion-btn {
+    display: block;
+    margin: 0px auto 0;
+    width: fit-content;
+}
+
+button {
+    margin: 5px; /* Réduction de la marge autour des boutons */
+}
+
