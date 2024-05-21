@@ -11,12 +11,11 @@ connection = sqlite3.connect('ParkEase.db')
 cursor = connection.cursor()
 
 @app.route('/')
-def home():
+def loginpage():
     return render_template('login.html')
 
 def connect_db():
     db_path = 'ParkEase.db'
-    print(f"Connecté à la base de données : {db_path}")
     return sqlite3.connect(db_path)
 
 #Login
@@ -27,7 +26,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         if check_credentials(username, password):
-            return redirect(url_for('dashboard'))
+            return redirect(url_for('home'))
         else:
             error = 'Nom d\'utilisateur ou mot de passe incorrect'
     return render_template('login.html', error=error)
@@ -47,10 +46,10 @@ def signup():
             error = 'Nom d\'utilisateur déjà pris'
     return render_template('signup.html', error=error)
 
-#Dashboard
-@app.route('/dashboard')
-def dashboard():
-    return render_template('difficulty.html')
+#Home
+@app.route('/home')
+def home():
+    return render_template('home.html')
 
 def check_credentials(username, password):
     with connect_db() as db:

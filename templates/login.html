@@ -14,18 +14,18 @@
             <form method="post" action="/login">
                 <h1>Se <span id="secondarycolor">connecter</span></h1>
                 <div class="user">
-                    <input class="input" type="text" id="username" name="username" placeholder="Entrer votre nom" required>
+                    <input class="input" type="text" id="username" name="username" placeholder="Entrer votre nom d'utilisateur" required>
                 </div>
                 <div class="password">
                     <input class="input" type="password" id="password" name="password" placeholder="Entrer votre mot de passe" required>
                 </div>
                 <button type="submit" class="button">Se connecter</button>
                 <div class="register">
-                    <p class="compte">Vous n'avez pas de compte? <a class="special-link" href="/signup">Créer un compte</a></p>
+                    <p class="compte">Vous n'avez pas de compte? <a class="special-link" href="/signup"><em>Créer un compte</em></a></p>
                 </div>
             </form>
             {% if error %}
-                <p style="color: red;">{{ error }}</p>
+                <p class="error" style="color: red;">{{ error }}</p>
             {% endif %}
         </div>
     </div>

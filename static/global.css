@@ -22,3 +22,18 @@ p {
     font-family: "Poppins";
     src: url('ttf/Poppins-Regular.ttf') format('truetype');
 }
+
+@font-face {
+    font-family: "PoppinsItalic";
+    src: url('Poppins-Italic.ttf') format('truetype');
+}
+
+.error {
+    padding: 0px 0px;
+    margin-top: -100px;
+    margin-bottom: 120px;
+}
+
+em {
+    font-family: "PoppinsItalic";
+}
