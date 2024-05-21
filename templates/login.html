@@ -4,36 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page de Connexion</title>
-    <link rel="stylesheet" href="/static/login.css">
-    <link rel="icon" href="/static/images/pendu.png" type="image/x-icon">
-    <link rel="shortcut icon" href="/static/images/pendu.png" type="image/x-icon">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="/static/tous_les_fichier.css">
+    <link rel="stylesheet" href="/static/reset.css">
+    <link rel="stylesheet" href="/static/connexion.css">
+    <link rel="stylesheet" href="/static/global.css">
 </head>
-<body class="fade-in" data-aos="zoom-in">
+<body>
     <div class="wrapper">
-        <form method="post" action="/login">
-            <h1>Se connecter</h1>
-            <div class="input-box">
-                <input type="text" id="username" name="username" placeholder="Entrer votre nom du joueur" required>
-                <i class='bx bxs-user'></i>
-            </div>
-            <div class="input-box">
-                <input type="password" id="password" name="password" placeholder="Entrer votre mot de passe" required>
-                <i class='bx bxs-lock-alt'></i>
-            </div>
-            <button type="submit" class="btn">Se connecter</button>
-            <div class="register-link">
-                <p>Vous n'avez pas de compte? <a href="/signup">Créer un compte</a></p>
-            </div>
-        </form>
-        {% if error %}
-            <p style="color: red;">{{ error }}</p>
-        {% endif %}
+        <div class="container">
+            <form method="post" action="/login">
+                <h1>Se <span id="secondarycolor">connecter</span></h1>
+                <div class="user">
+                    <input type="text" id="username" name="username" placeholder="Entrer votre nom du joueur" required>
+                </div>
+                <div class="password">
+                    <input type="password" id="password" name="password" placeholder="Entrer votre mot de passe" required>
+                </div>
+                <button type="submit" class="button">Se connecter</button>
+                <div class="register">
+                    <p>Vous n'avez pas de compte? <a class="special-link" href="/signup">Créer un compte</a></p>
+                </div>
+            </form>
+            {% if error %}
+                <p style="color: red;">{{ error }}</p>
+            {% endif %}
+        </div>
     </div>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
 </body>
 </html>

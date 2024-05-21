@@ -4,40 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Créer un compte</title>
-    <link rel="stylesheet" href="/static/signup.css">
-    <link rel="icon" href="/static/images/pendu.png" type="image/x-icon">
-    <link rel="shortcut icon" href="/static/images/pendu.png" type="image/x-icon">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="/static/tous_les_fichier.css">
+    <link rel="stylesheet" href="/static/reset.css">
+    <link rel="stylesheet" href="/static/connexion.css">
+    <link rel="stylesheet" href="/static/global.css">
 </head>
-<body class="fade-in" data-aos="zoom-in">
+<body>
     <div class="wrapper">
-        <form method="post" action="/signup">
-            <h1>Créer un compte</h1>
-            <div class="input-box">
-                <label for="username">Créer votre nom de joueur:</label>
-                <input type="text" id="username" name="username" required>
-                <i class='bx bxs-user'></i>
-            </div>
-            <div class="input-box">
-                <label for="password">Créer votre mot de passe:</label>
-                <input type="password" id="password" name="password" required>
-                <i class='bx bxs-lock-alt'></i>
-            </div>
-            <button type="submit" class="btn">Valider</button>
-        </form>
-        <form action="/login">
-            <div class="register-link">
-                <p><a href="/login" class="special-link">Retour à la page de connexion</a></p>
-            </div>
-        </form>
-        {% if error %}
-            <p style="color: red;">{{ error }}</p>
-        {% endif %}
+        <div class="container">
+            <form method="post" action="/signup">
+                <div class="formcontainer">
+                    <h1>Créer un compte</h1>
+                    <div class="usercontainer">
+                        <div class="user">
+                            <label for="username">Créer votre nom d'utilisateur:</label>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+                        <div class="password">
+                            <label for="password">Créer votre mot de passe:</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="button">Valider</button>
+                </div>
+            </form>
+            <form action="/login">
+                <div class="register">
+                    <p><a href="/login" class="special-link">Retour à la page de connexion</a></p>
+                </div>
+            </form>
+            {% if error %}
+                <p style="color: red;">{{ error }}</p>
+            {% endif %}
+        </div>
     </div>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 import sqlite3
 from bcrypt import hashpw, gensalt
 
-connection = sqlite3.connect('Pendu.db')
+connection = sqlite3.connect('ParkEase.db')
 cursor = connection.cursor()
 
 cursor.execute("""
