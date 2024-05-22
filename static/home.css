@@ -146,6 +146,8 @@
     text-decoration: none;
     color: black;
     transition: all 0.3s ease-in-out;
+    width: 400px;
+    justify-content: space-between;
 }
 
 .card:hover {

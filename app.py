@@ -77,6 +77,10 @@ def create_user(username, password, immatriculation):
     except sqlite3.Error as e:
         print(f"Erreur lors de la création de l'utilisateur : {e}")
         return False
+    
+@app.route('/detailparking')
+def detailparking():
+    return render_template('DetailParking.html')
             
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
