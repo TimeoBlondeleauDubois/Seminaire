@@ -35,6 +35,16 @@
     margin-right: 30px;
 }
 
+.indication {
+    max-width: 55px;
+    max-height: auto;
+    margin-right: 15px;
+}
+
+.navaccount {
+    display: flex;
+}
+
 .titlecontainer {
     color: black;
     align-items: center;
