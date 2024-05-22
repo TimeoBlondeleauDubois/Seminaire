@@ -8,7 +8,6 @@
     text-align: center;
     margin-left: 5px;
     margin-right: 5px; 
-    margin-top: 5px;
     margin-bottom: 5px;
 }
 
@@ -19,12 +18,14 @@
 .navbar {
     background-image: url('../static/Picture/Header.svg');
     display: flex;
-    height: 175px;
+    height: 125px;
     justify-content: space-between;
+    position: sticky;
+    width: 100%;
 }
 
 .logo {
-    max-width: 175px;
+    max-width: 140px;
     max-height: auto;
     margin-left: 30px;
 }
@@ -57,7 +58,6 @@
     padding-left: 20px;
     margin-top: 17px;
     height: 45px;
-    width: 38vw;
     margin-bottom: 30px;
 }
 
@@ -67,7 +67,7 @@
 }
 
 .firstcontainer {
-    width: 35%;
+   
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -83,7 +83,6 @@
 .secondcontainerwrapper {
     display: flex;
     justify-content: center;
-    width: 65%;
 }
 
 .premiumcontainer {
@@ -127,7 +126,7 @@
 }
 
 .map {
-    width: 100%;
+    width: 99%;
     height: auto;
 }
 
@@ -140,7 +139,7 @@
 }
 
 .card {
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
     border-radius: 16px;
     margin-bottom: 40px;
     display: flex;
@@ -235,7 +234,6 @@
     padding-left: 20px;
     margin-left: 20px;
     padding-right: 20px;
-    width: 17vw;
     transition: all 0.3s ease-in-out;
 }
 
@@ -254,4 +252,40 @@
 
 .car {
     margin-left: 8px;
+}
+
+@media screen and (min-width: 1100px) {
+    .firstcontainer {
+        width: 35%;
+    }
+
+    .secondcontainerwrapper {
+        width: 65%;
+    }
+
+    .vehicule {
+        width: 17vw;
+    }
+
+    .input {
+        width: 38vw;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .main {
+        flex-direction: column;
+    }
+
+    .firstcontainer {
+        order: 1;
+    }
+
+    .vehicule {
+        min-width: 100px;
+    }
+
+    .input {
+        width: 50%;
+    }
 }

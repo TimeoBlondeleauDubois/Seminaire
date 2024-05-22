@@ -43,8 +43,8 @@ p {
 
 .button {
     border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 8px 30px;
+    border-radius: 300px;
     cursor: pointer;
     color: #2EAEE5;
     background-color: white;
