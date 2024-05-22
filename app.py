@@ -38,8 +38,9 @@ def signup():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        immatriculation = request.form['immatriculation']
         print(f"Avant create_user: {username}, {password}")
-        if create_user(username, password):
+        if create_user(username, password, immatriculation):
             print("Après create_user: Utilisateur créé avec succès")
             return redirect(url_for('login'))
         else:
@@ -65,12 +66,12 @@ def check_credentials(username, password):
     return None
 
 #Creer un utilisateur
-def create_user(username, password):
+def create_user(username, password, immatriculation):
     try:
         hashed_password = hashpw(password.encode('utf-8'), gensalt())
         with connect_db() as db:
             cursor = db.cursor()
-            cursor.execute("INSERT INTO User (Nom_Utilisateur, Mot_De_Passe) VALUES (?, ?)", (username, hashed_password))
+            cursor.execute("INSERT INTO User (Nom_Utilisateur, Mot_De_Passe, immatriculation) VALUES (?, ?, ?)", (username, hashed_password, immatriculation))
         print(f"Utilisateur {username} créé avec succès")
         return True
     except sqlite3.Error as e:
