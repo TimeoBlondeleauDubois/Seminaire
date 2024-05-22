@@ -17,9 +17,9 @@
 }
 
 .navbar {
-    background-color: red;
+    background-image: url('../static/Picture/Header.svg');
     display: flex;
-    height: 125px;
+    height: 175px;
     justify-content: space-between;
 }
 
@@ -35,10 +35,6 @@
     margin-right: 30px;
 }
 
-.barrederecherche {
-    margin-right: 30px;
-}
-
 .titlecontainer {
     color: black;
     align-items: center;
@@ -49,6 +45,10 @@
     border: none;
     background-color: #C1E5F8;
     padding-left: 20px;
+    margin-top: 17px;
+    height: 45px;
+    width: 40vw;
+    margin-bottom: 30px;
 }
 
 .main {
@@ -58,19 +58,24 @@
 
 .firstcontainer {
     background-color: aquamarine;
-    min-width: 450px;
+    width: 35%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .secondcontainer {
-    background-color: green;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    width: 100%;
+}
+
+.secondcontainerwrapper {
+    display: flex;
+    justify-content: center;
+    background-color: green;
+    width: 65%;
 }
 
 .premiumcontainer {
@@ -82,6 +87,7 @@
     border-radius: 8px;
     transition: all 0.3s ease-in-out;
     margin-top: 50px;
+    margin-bottom: 30px;
 }
 
 .premiumcontainer:hover {
@@ -100,8 +106,19 @@
     height: auto;
     margin-top: 2px;
     margin-bottom: 2px;
+    margin-left: 15px;
 }
 
 .title {
     font-size: 32px;
+}
+
+.map, .barrederecherche, .title {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.map {
+    width: 100%;
+    height: auto;
 }
