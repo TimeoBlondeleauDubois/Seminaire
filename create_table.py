@@ -7,38 +7,45 @@ cursor = connection.cursor()
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS User (
         US_Id INTEGER PRIMARY KEY AUTOINCREMENT,
-        Nom_Utilisateur VARCHAR UNIQUE,
-        Mot_De_Passe VARCHAR
+        Nom_Utilisateur TEXT UNIQUE NOT NULL,
+        Mot_De_Passe TEXT NOT NULL,
+        Est_Premium INTEGER NOT NULL DEFAULT 0,
+        Immatriculation TEXT NOT NULL
     );
 """)
 
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS Parking (
         Park_Id INTEGER PRIMARY KEY AUTOINCREMENT,
-        Nom_Parking VARCHAR UNIQUE,
-        Adresse_Parking VARCHAR,
-        Ville_Parking VARCHAR  
+        Nom_Parking TEXT UNIQUE NOT NULL,
+        Adresse_Parking TEXT NOT NULL,
+        Ville_Parking TEXT NOT NULL,
+        Hauteur_max REAL NOT NULL,
+        A_Places_handicapees INTEGER NOT NULL DEFAULT 0,
+        Est_Sous_Surveillance INTEGER NOT NULL DEFAULT 0,
+        Est_Couvert INTEGER NOT NULL DEFAULT 0
     );
 """)
 
 cursor.execute("""
-    CREATE TABLE IF NOT EXISTS Places (
+    CREATE TABLE IF NOT EXISTS Place (
         Place_Id INTEGER PRIMARY KEY AUTOINCREMENT,
-        Nom_Place VARCHAR UNIQUE,
-        Park_id INTEGER UNIQUE,
-        FOREIGN KEY(Park_id) REFERENCES Parking(Park_Id)       
+        Nom_Place TEXT UNIQUE NOT NULL,  
+        Park_Id INTEGER NOT NULL,
+        FOREIGN KEY(Park_Id) REFERENCES Parking(Park_Id) ON DELETE CASCADE       
     );
 """)
 
 cursor.execute("""
-    CREATE TABLE IF NOT EXISTS User_Parking (
-        User_Parking_id INTEGER PRIMARY KEY,
-        User_id INTEGER,
-        Park_id INTEGER,
-        FOREIGN KEY(Park_id) REFERENCES Parking(Park_Id),
-        FOREIGN KEY(User_id) REFERENCES User(User_id)       
+    CREATE TABLE IF NOT EXISTS Reservation (
+        Reservation_Id INTEGER PRIMARY KEY AUTOINCREMENT,
+        Date_Debut_Reservation TEXT NOT NULL,
+        Date_Fin_Reservation TEXT NOT NULL,
+        User_Id INTEGER NOT NULL,
+        Place_Id INTEGER NOT NULL,
+        FOREIGN KEY(User_Id) REFERENCES User(US_Id) ON DELETE CASCADE,       
+        FOREIGN KEY(Place_Id) REFERENCES Place(Place_Id) ON DELETE CASCADE
     );
 """)
-
 
 connection.commit()
