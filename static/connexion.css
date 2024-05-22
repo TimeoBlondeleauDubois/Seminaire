@@ -1,6 +1,6 @@
 .wrapper {
     display: flex;
-    background-color: #289EC3;
+    background-color: #2EAEE5;
     align-items: center;
     justify-content: center;
     border-radius: 16px;
@@ -38,7 +38,7 @@ p {
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
-    color: #289EC3;
+    color: #2EAEE5;
     background-color: white;
     font-size: 18px;    
     font-family: "Poppins", sans-serif;
