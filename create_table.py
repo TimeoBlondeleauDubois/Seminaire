@@ -49,28 +49,23 @@ cursor.execute("""
     );
 """)
 
-cursor.execute("INSERT INTO Parking (Nom_Parking, Adresse_Parking, Ville_Parking, Hauteur_max, A_Places_handicapees, Est_Sous_Surveillance, Est_Couvert, Est_Horaire_24h) VALUES ('Rouen', '1 Rue de la République, Rouen', 'Rouen', 2.0, 1, 1, 1, 0);")
-cursor.execute("INSERT INTO Parking (Nom_Parking, Adresse_Parking, Ville_Parking, Hauteur_max, A_Places_handicapees, Est_Sous_Surveillance, Est_Couvert, Est_Horaire_24h) VALUES ('Rouen centre ville', '2 Avenue de Normandie, Rouen', 'Rouen', 2.5, 1, 0, 1, 1);")
-cursor.execute("INSERT INTO Parking (Nom_Parking, Adresse_Parking, Ville_Parking, Hauteur_max, A_Places_handicapees, Est_Sous_Surveillance, Est_Couvert, Est_Horaire_24h) VALUES ('Paris', '10 Boulevard Montmartre, Paris', 'Paris', 2.0, 0, 1, 1 , 0);")
-cursor.execute("INSERT INTO Parking (Nom_Parking, Adresse_Parking, Ville_Parking, Hauteur_max, A_Places_handicapees, Est_Sous_Surveillance, Est_Couvert, Est_Horaire_24h) VALUES ('Lyon', '5 Place Bellecour, Lyon', 'Lyon', 2.5, 1, 1, 0, 1);")
-cursor.execute("INSERT INTO Parking (Nom_Parking, Adresse_Parking, Ville_Parking, Hauteur_max, A_Places_handicapees, Est_Sous_Surveillance, Est_Couvert, Est_Horaire_24h) VALUES ('Marseille', '15 Quai des Belges, Marseille', 'Marseille', 2.2, 0, 0, 1, 0);")
 
 
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('A1', 1);")
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('A2', 1);")
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('A3', 1);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('A1', 1);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('A2', 1);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('A3', 1);")
 
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('b1', 2);")
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('b2', 2);")
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('b3', 2);")
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('b4', 2);")
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('b5', 2);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('b1', 2);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('b2', 2);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('b3', 2);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('b4', 2);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('b5', 2);")
 
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('C1', 3);")
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('C2', 3);")
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('C3', 3);")
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('C4', 3);")
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('C5', 3);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('C1', 3);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('C2', 3);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('C3', 3);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('C4', 3);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('C5', 3);")
 
 # cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('D1', 4);")
 # cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('D2', 4);")
@@ -78,18 +73,39 @@ cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('C5', 3);")
 # cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('D4', 4);")
 # cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('D5', 4);")
 
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('E1', 5);")
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('E2', 5);")
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('E3', 5);")
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('E4', 5);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('E1', 5);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('E2', 5);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('E3', 5);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('E4', 5);")
+
+cursor.execute("INSERT INTO Parking (Nom_Parking, Adresse_Parking, Ville_Parking, Hauteur_max, A_Places_handicapees, Est_Sous_Surveillance, Est_Couvert, Est_Horaire_24h) VALUES ('Parking du marché', '1 Rue de la République, Rouen', 'Rouen', 2.0, 1, 1, 1, 0);")
+cursor.execute("INSERT INTO Parking (Nom_Parking, Adresse_Parking, Ville_Parking, Hauteur_max, A_Places_handicapees, Est_Sous_Surveillance, Est_Couvert, Est_Horaire_24h) VALUES ('Parking du centre', '2 Avenue de Normandie, Rouen', 'Rouen', 2.5, 1, 0, 1, 1);")
+cursor.execute("INSERT INTO Parking (Nom_Parking, Adresse_Parking, Ville_Parking, Hauteur_max, A_Places_handicapees, Est_Sous_Surveillance, Est_Couvert, Est_Horaire_24h) VALUES ('Parking de la Mare', '10 Boulevard Montmartre, Paris', 'Paris', 2.0, 0, 1, 1 , 0);")
+cursor.execute("INSERT INTO Parking (Nom_Parking, Adresse_Parking, Ville_Parking, Hauteur_max, A_Places_handicapees, Est_Sous_Surveillance, Est_Couvert, Est_Horaire_24h) VALUES ('Parking de la Tour', '5 Place Bellecour, Lyon', 'Lyon', 2.5, 1, 1, 0, 1);")
+cursor.execute("INSERT INTO Parking (Nom_Parking, Adresse_Parking, Ville_Parking, Hauteur_max, A_Places_handicapees, Est_Sous_Surveillance, Est_Couvert, Est_Horaire_24h) VALUES ('Parking du Port', '15 Quai des Belges, Marseille', 'Marseille', 2.2, 0, 0, 1, 0);")
 
 cursor.execute("INSERT INTO Reservation (Date_Debut_Reservation, Date_Fin_Reservation, User_Id, Place_Id) VALUES ('2024-05-25 08:00', '2024-06-25 18:00', 1, 1);")
 cursor.execute("INSERT INTO Reservation (Date_Debut_Reservation, Date_Fin_Reservation, User_Id, Place_Id) VALUES ('2024-05-26 09:00', '2024-06-26 17:00', 2, 2);")
-cursor.execute("INSERT INTO Reservation (Date_Debut_Reservation, Date_Fin_Reservation, User_Id, Place_Id) VALUES ('2024-04-26 09:00', '2024-04-26 17:00', 2, 16);")
-cursor.execute("INSERT INTO Reservation (Date_Debut_Reservation, Date_Fin_Reservation, User_Id, Place_Id) VALUES ('2024-04-26 09:00', '2025-04-26 17:00', 2, 16);")
+cursor.execute("INSERT INTO Reservation (Date_Debut_Reservation, Date_Fin_Reservation, User_Id, Place_Id) VALUES ('2024-04-26 09:00', '2024-04-26 17:00', 2, 16);") # Plus valide
+cursor.execute("INSERT INTO Reservation (Date_Debut_Reservation, Date_Fin_Reservation, User_Id, Place_Id) VALUES ('2024-04-26 09:00', '2024-06-26 17:00', 3, 16);")
+cursor.execute("INSERT INTO Reservation (Date_Debut_Reservation, Date_Fin_Reservation, User_Id, Place_Id) VALUES ('2024-04-26 09:00', '2024-06-26 17:00', 4, 120);")
 
+# cursor.execute("INSERT INTO Reservation (Date_Debut_Reservation, Date_Fin_Reservation, User_Id, Place_Id) VALUES ('2024-04-26 09:00', '2025-04-26 17:00', 2, 16);")
 
-for i in range(1, 30):
+for i in range(1, 100):
+    cursor.execute(f"INSERT INTO Place (Nom_Place, Park_Id) VALUES ('A{i}', 1);")
+
+for i in range(1, 40):
+    cursor.execute(f"INSERT INTO Place (Nom_Place, Park_Id) VALUES ('B{i}', 2);")
+
+for i in range(1, 50):
+    cursor.execute(f"INSERT INTO Place (Nom_Place, Park_Id) VALUES ('D{i}', 3);")
+
+for i in range(1, 10):
     cursor.execute(f"INSERT INTO Place (Nom_Place, Park_Id) VALUES ('D{i}', 4);")
+
+for i in range(1, 150):
+    cursor.execute(f"INSERT INTO Place (Nom_Place, Park_Id) VALUES ('E{i}', 5);")
+
 
 connection.commit()
