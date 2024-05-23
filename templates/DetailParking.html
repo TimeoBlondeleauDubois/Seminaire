@@ -19,17 +19,17 @@
             </div>
         </div>
         <div class="navaccount">
-        <img class="indication" src="../static/Picture/indication.svg" alt="indication">
+            <img class="indication" src="../static/Picture/indication.svg" alt="indication">
             <img class="account" src="../static/Picture/account.svg" alt="account">
         </div>
     </div>
     <div class="wrapper">
         <div class="wrappercontainer">
             <div class="leftcontainer">
-                <h1 class="title">Parking de la Meuse</h1>
+                <h1 class="title">{{ parking_info[1] }}</h1>
                 <p class="paragraph">Places disponibles :</p>
                 <div class="container">
-                    <p class="nbdeplace"><span id="green">331</span> sur 500</p>
+                    <p class="nbdeplace"><span id="green">{{ nombres_places_disponibles }}</span> sur {{ nombres_places_totales }}</p>
                     <p class="ouverture">Ouvert 24h/24</p>
                 </div>
                 <img class="parkingpicture" src="../static/Picture/parkingimage.svg" alt="">

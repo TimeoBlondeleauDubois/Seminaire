@@ -100,9 +100,13 @@ def create_user(username, password, immatriculation):
         print(f"Erreur lors de la création de l'utilisateur : {e}")
         return False
     
-@app.route('/detailparking')
-def detailparking():
-    return render_template('DetailParking.html')
+@app.route('/detailparking/<int:parking_id>')
+def detailparking(parking_id):
+    with connect_db() as db:
+        cursor = db.cursor()
+        cursor.execute("SELECT * FROM Parking WHERE Park_Id = ?", (parking_id,))
+        parking_info = cursor.fetchone()
+    return render_template('DetailParking.html', parking_info=parking_info)
             
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)

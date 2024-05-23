@@ -20,6 +20,7 @@
 {% if Infos_parking %}
     <ul>
         {% for parking in Infos_parking %}
+        <a href="/detailparking/{{ parking[0] }}">
             <li>
                 <strong>Nom Parking:</strong> {{ parking[1] }}<br>
                 <strong>Adresse:</strong> {{ parking[2] }}<br>
@@ -30,8 +31,9 @@
                 <strong>Couvert:</strong> {{ "Oui" if parking[7] else "Non" }}<br>
                 <strong>Nombre de places disponibles:</strong> {{ nombres_places_disponibles[loop.index0] }}<br>
                 <strong>Nombre Total de Places:</strong> {{ nombres_places_totales[loop.index0] }}<br>
-                <br>
             </li>
+        </a>
+        <br>
         {% endfor %}
     </ul>
 {% else %}
