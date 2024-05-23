@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    <link rel="stylesheet" href="/static/reset.css">
+    <link rel="stylesheet" href="/static/home.css">
+    <link rel="stylesheet" href="/static/global.css">
+</head>
+<div class="navbar">
+    <img class="logo" src="../static/Picture/logo.svg" alt="logo">
+    <div class="navaccount">
+        <img class="indication" src="../static/Picture/indication.svg" alt="indication">
+        <img class="account" src="../static/Picture/account.svg" alt="account">
+    </div>
+</div>
+<body>
+    <h1>Résultats de la recherche</h1>
+    {% if Infos_parking %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom Parking</th>
+                    <th>Adresse</th>
+                    <th>Ville</th>
+                    <th>Hauteur Max</th>
+                    <th>Places Handicapées</th>
+                    <th>Sous Surveillance</th>
+                    <th>Couvert</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for parking in Infos_parking %}
+                    <tr>
+                        <td>{{ parking[1] }}</td> <!-- Nom_Parking -->
+                        <td>{{ parking[2] }}</td> <!-- Adresse_Parking -->
+                        <td>{{ parking[3] }}</td> <!-- Ville_Parking -->
+                        <td>{{ parking[4] }}</td> <!-- Hauteur_max -->
+                        <td>{{ parking[5] }}</td> <!-- A_Places_handicapees -->
+                        <td>{{ "Oui" if parking[6] else "Non" }}</td> <!-- Est_Sous_Surveillance -->
+                        <td>{{ "Oui" if parking[7] else "Non" }}</td> <!-- Est_Couvert -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Aucun parking trouvé</p>
+    {% endif %}
+</body>
+</html>

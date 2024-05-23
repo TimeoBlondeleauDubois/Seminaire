@@ -47,10 +47,23 @@ def signup():
             error = 'Nom d\'utilisateur déjà pris'
     return render_template('signup.html', error=error)
 
-#Home
-@app.route('/home')
+
+#home
+@app.route('/home', methods=['GET','POST'])
 def home():
-    return render_template('home.html')
+    if request.method == 'GET':
+        return render_template('home.html')
+    else:
+        Parking_Name = request.form['Nom_Parking']
+        with connect_db() as db:
+            cursor = db.cursor()
+            cursor.execute("SELECT * FROM Parking WHERE Ville_Parking LIKE ?", (Parking_Name + '%',))
+            Infos_parking = cursor.fetchall()
+        if Infos_parking is None:
+            flash('Aucun parking trouvé')
+            return render_template('home.html')
+        return render_template('listerecherche.html', Infos_parking=Infos_parking)
+        
 
 def check_credentials(username, password):
     with connect_db() as db:

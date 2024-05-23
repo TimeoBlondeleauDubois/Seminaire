@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="/static/home.css">
     <link rel="stylesheet" href="/static/global.css">
 </head>
-<body>
-    <div class="navbar">
-        <img class="logo" src="../static/Picture/logo.svg" alt="logo">
-        <div class="navaccount">
-            <img class="indication" src="../static/Picture/indication.svg" alt="indication">
-            <img class="account" src="../static/Picture/account.svg" alt="account">
-        </div>
+<div class="navbar">
+    <img class="logo" src="../static/Picture/logo.svg" alt="logo">
+    <div class="navaccount">
+        <img class="indication" src="../static/Picture/indication.svg" alt="indication">
+        <img class="account" src="../static/Picture/account.svg" alt="account">
     </div>
+</div>
+<body>
     <div class="wrapper">
         <div class="container">
             <div class="main">
@@ -93,8 +93,11 @@
                             <h1 class="title">Garez-vous avec simplicité.</h1>
                         </div>
                         <div class="barrederecherche">
-                            <input class="input" type="text" id="" name="" placeholder="Où ?" required>
-                            <div class="vehicule">
+                            <form method="post" action="/home">
+                                <input class="input" type="text" id="Nom_Parking" name="Nom_Parking" placeholder="Où ?" required>
+                                <button type="submit" class="button"><img src="../static/Picture/Search.svg" alt="search"></button>
+                            </form>
+                                <div class="vehicule">
                                 <p class="paragraphvehicule">Je change de véhicule</p>
                                 <img class="car" src="../static/Picture/Car.svg" alt="car">
                             </div>
