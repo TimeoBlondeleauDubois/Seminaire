@@ -100,6 +100,7 @@
 .wrappercontainer {
     margin-left: 8px;
     margin-right: 8px;
+    display: flex;
 }
 
 .title {
@@ -160,4 +161,29 @@
 .picturecontainer {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+}
+
+.bouton {
+    background-color: #2EAEE5;
+    border: none;
+    border-radius: 300px;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: fit-content;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.bouton:hover {
+    background-color: #1E7EAC;
+}
+
+.rightcontainer {
+    display: flex;
+    flex-direction: column;
+   align-items: center;
 }
