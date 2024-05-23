@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from bcrypt import hashpw, gensalt
 import sqlite3, random
-from datetime import datetime
+from datetime import datetime, timedelta
 from flask import flash
 
 app = Flask(__name__)
@@ -106,9 +106,32 @@ def detailparking(parking_id):
         cursor = db.cursor()
         cursor.execute("SELECT * FROM Parking WHERE Park_Id = ?", (parking_id,))
         parking_info = cursor.fetchone()
-    return render_template('DetailParking.html', parking_info=parking_info)
+        cursor.execute("SELECT COUNT(Place.Place_Id) FROM Place LEFT JOIN Reservation ON Place.Place_Id = Reservation.Place_Id AND Reservation.Date_Fin_Reservation >= datetime('now') WHERE Place.Park_Id = ? AND Reservation.Place_Id IS NULL;", (parking_id,))
+        nombre_places_disponibles_parking = cursor.fetchone()[0]
+        cursor.execute("SELECT COUNT(Place.Place_Id) FROM Place WHERE Park_Id = ?", (parking_id,))
+        nombre_places_totales_parking = cursor.fetchone()[0]
+    return render_template('DetailParking.html', parking_info=parking_info , nombre_places_disponibles_parking=nombre_places_disponibles_parking, nombre_places_totales_parking=nombre_places_totales_parking)
+
+@app.route('/reservation/<int:parking_id>', methods=['GET', 'POST'])
+def reservation(parking_id):
+    with connect_db() as db:
+        cursor = db.cursor()
+        cursor.execute("SELECT Place.Place_Id FROM Place LEFT JOIN Reservation ON Place.Place_Id = Reservation.Place_Id AND Reservation.Date_Fin_Reservation >= datetime('now') WHERE Place.Park_Id = ? AND Reservation.Place_Id IS NULL;", (parking_id,))
+        IdPLaceDispoTuples = cursor.fetchone()
+        if IdPLaceDispoTuples is None:
+            return render_template('error.html')
+        IPlaceDispo = [e for e in IdPLaceDispoTuples]
+        cursor.execute("INSERT INTO Reservation (Date_Debut_Reservation, Date_Fin_Reservation, User_Id, Place_Id) VALUES (?, ?, ?, ?)", (datetime.now(), datetime.now() + timedelta(hours=3), session['user_id'], IPlaceDispo[0]))
+       
+    return render_template('home.html')
+
+
+
+connection.commit()
+connection.close()
+
+
             
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
-    connection.commit()
-    connection.close()
+

@@ -1,53 +1,89 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Détail du parking</title>
-    <link rel="stylesheet" href="/static/reset.css">
-    <link rel="stylesheet" href="/static/detailparking.css">
-    <link rel="stylesheet" href="/static/global.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/static/reset.css" />
+    <link rel="stylesheet" href="/static/detailparking.css" />
+    <link rel="stylesheet" href="/static/global.css" />
+  </head>
+  <body>
     <div class="navbar">
-        <a href="/home"><img class="logo" src="../static/Picture/logo.svg" alt="logo"></a>
-        <div class="barrederecherche">
-            <input class="input" type="text" id="" name="" placeholder="Où ?" required>
-            <div class="vehicule">
-                <p class="paragraphvehicule">Je change de véhicule</p>
-                <img class="car" src="../static/Picture/Car.svg" alt="car">
-            </div>
+      <a href="/home"
+        ><img class="logo" src="../static/Picture/logo.svg" alt="logo"
+      /></a>
+      <div class="barrederecherche">
+        <input
+          class="input"
+          type="text"
+          id=""
+          name=""
+          placeholder="Où ?"
+          required
+        />
+        <div class="vehicule">
+          <p class="paragraphvehicule">Je change de véhicule</p>
+          <img class="car" src="../static/Picture/Car.svg" alt="car" />
         </div>
-        <div class="navaccount">
-            <img class="indication" src="../static/Picture/indication.svg" alt="indication">
-            <img class="account" src="../static/Picture/account.svg" alt="account">
-        </div>
+      </div>
+      <div class="navaccount">
+        <img
+          class="indication"
+          src="../static/Picture/indication.svg"
+          alt="indication"
+        />
+        <img
+          class="account"
+          src="../static/Picture/account.svg"
+          alt="account"
+        />
+      </div>
     </div>
     <div class="wrapper">
-        <div class="wrappercontainer">
-            <div class="leftcontainer">
-                <h1 class="title">{{ parking_info[1] }}</h1>
-                <p class="paragraph">Places disponibles :</p>
-                <div class="container">
-                    <p class="nbdeplace"><span id="green">{{ nombres_places_disponibles }}</span> sur {{ nombres_places_totales }}</p>
-                    <p class="ouverture">Ouvert 24h/24</p>
-                </div>
-                <img class="parkingpicture" src="../static/Picture/parkingimage.svg" alt="">
-                <div class="information">
-                    <div class="picturecontainer">
-                        <img class="picture" src="../static/Picture/handicap.svg" alt="handicap">
-                        <img class="picture" src="../static/Picture/camera.svg" alt="camera">
-                        <img class="picture" src="../static/Picture/hauteur.svg" alt="hauteur">
-                    </div>
-                    <div class="note">
-                        <img src="../static/Picture/etoile.svg" alt="">
-                    </div>
-                </div>
+      <div class="wrappercontainer">
+        <div class="leftcontainer">
+          <h1 class="title">{{ parking_info[1] }}</h1>
+          <p class="paragraph">Places disponibles :</p>
+          <div class="container">
+            <p class="nbdeplace">
+              <span id="green">{{ nombre_places_disponibles_parking }}</span>
+              sur {{ nombre_places_totales_parking }}
+            </p>
+            {% if parking_info[8] %}
+            <p class="ouverture">Ouvert 24h/24</p>
+            {% endif %}
+          </div>
+          <img
+            class="parkingpicture"
+            src="../static/Picture/parkingimage.svg"
+            alt=""
+          />
+          <div class="information">
+            <div class="picturecontainer">
+              {% if parking_info[5] %}
+              <img
+                class="picture"
+                src="../static/Picture/handicap.svg"
+                alt="handicap"
+              />
+              {% endif %} {% if parking_info[6] %}
+              <img
+                class="picture"
+                src="../static/Picture/camera.svg"
+                alt="camera"
+              />
+              {% endif %} {{ parking_info[4] }}
             </div>
-            <div class="rightcontainer">
-                
+            <div class="note">
+              <img src="../static/Picture/etoile.svg" alt="" />
             </div>
+          </div>
         </div>
+        <div class="rightcontainer">
+          <a class="bouton" href="/reservation/{{  parking_info[0] }}">teststetet</a>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
