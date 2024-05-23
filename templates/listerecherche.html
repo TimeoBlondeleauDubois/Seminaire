@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Résultats de la recherche</title>
     <link rel="stylesheet" href="/static/reset.css">
-    <link rel="stylesheet" href="/static/home.css">
+    <link rel="stylesheet" href="/static/listerecherche.css">
     <link rel="stylesheet" href="/static/global.css">
 </head>
+<a href="/home">
 <div class="navbar">
     <img class="logo" src="../static/Picture/logo.svg" alt="logo">
     <div class="navaccount">
@@ -15,25 +16,25 @@
         <img class="account" src="../static/Picture/account.svg" alt="account">
     </div>
 </div>
+</a>
 <body>
-<h1>Résultats de la recherche</h1>
+    <br>
+<h1 class="title">Résultats de la recherche : </h1>
+<br>
 {% if Infos_parking %}
     <ul>
         {% for parking in Infos_parking %}
-        <a href="/detailparking/{{ parking[0] }}">
-            <li>
-                <strong>Nom Parking:</strong> {{ parking[1] }}<br>
-                <strong>Adresse:</strong> {{ parking[2] }}<br>
-                <strong>Ville:</strong> {{ parking[3] }}<br>
-                <strong>Hauteur Max:</strong> {{ parking[4] }}<br>
-                <strong>Places Handicapées:</strong> {{ "Oui" if parking[5] else "Non" }}<br>
-                <strong>Sous Surveillance:</strong> {{ "Oui" if parking[6] else "Non" }}<br>
-                <strong>Couvert:</strong> {{ "Oui" if parking[7] else "Non" }}<br>
-                <strong>Nombre de places disponibles:</strong> {{ nombres_places_disponibles[loop.index0] }}<br>
-                <strong>Nombre Total de Places:</strong> {{ nombres_places_totales[loop.index0] }}<br>
+        <a class="lien" href="/detailparking/{{ parking[0] }}">
+            <li class="liste">
+                <strong class="Nom_Parking">Nom Parking:</strong> <span id="bold">{{ parking[1] }}</span><br>
+                <strong class="adresse">Adresse:</strong> <span id="bold">{{ parking[2] }}</span><br>
+                <strong class="ville">Ville:</strong> <span id="bold">{{ parking[3] }}</span><br>
+                <strong class="hauteur">Hauteur Max:</strong> <span id="bold">{{ parking[4] }}</span><br>
+                <strong class="place">Places Handicapées:</strong> <span id="bold">{{ "Oui" if parking[5] else "Non" }}</span><br>
+                <strong class="surveillance">Sous Surveillance:</strong> <span id="bold">{{ "Oui" if parking[6] else "Non" }}</span><br>
+                <strong class="nbplace">Nombre de places disponibles:</strong> <span id="bold"> {{ nombres_places_disponibles[loop.index0] }} / {{ nombres_places_totales[loop.index0] }} </span><br>
             </li>
         </a>
-        <br>
         {% endfor %}
     </ul>
 {% else %}
