@@ -51,7 +51,33 @@ def signup():
 @app.route('/home', methods=['GET','POST'])
 def home():
     if request.method == 'GET':
-        return render_template('home.html')
+        with connect_db() as db:
+            cursor = db.cursor()
+            cursor.execute("SELECT * FROM Parking")
+            parkings =  cursor.fetchall()
+            parking1 = random.choice(parkings)
+            parkings.remove(parking1)
+            parking2 = random.choice(parkings)
+            parkings.remove(parking2)
+            parking3 = random.choice(parkings)
+            parkings.remove(parking3)
+
+            cursor.execute("SELECT COUNT(Place.Place_Id) FROM Place LEFT JOIN Reservation ON Place.Place_Id = Reservation.Place_Id AND Reservation.Date_Fin_Reservation >= datetime('now') WHERE Place.Park_Id = ? AND Reservation.Place_Id IS NULL;", (parking1[0],))
+            nombre_places_disponibles_parking1 = cursor.fetchone()[0]
+            cursor.execute("SELECT COUNT(Place.Place_Id) FROM Place WHERE Park_Id = ?", (parking1[0],))
+            nombre_places_totales_parking1 = cursor.fetchone()[0]
+
+            cursor.execute("SELECT COUNT(Place.Place_Id) FROM Place LEFT JOIN Reservation ON Place.Place_Id = Reservation.Place_Id AND Reservation.Date_Fin_Reservation >= datetime('now') WHERE Place.Park_Id = ? AND Reservation.Place_Id IS NULL;", (parking2[0],))
+            nombre_places_disponibles_parking2 = cursor.fetchone()[0]
+            cursor.execute("SELECT COUNT(Place.Place_Id) FROM Place WHERE Park_Id = ?", (parking2[0],))
+            nombre_places_totales_parking2 = cursor.fetchone()[0]
+
+            cursor.execute("SELECT COUNT(Place.Place_Id) FROM Place LEFT JOIN Reservation ON Place.Place_Id = Reservation.Place_Id AND Reservation.Date_Fin_Reservation >= datetime('now') WHERE Place.Park_Id = ? AND Reservation.Place_Id IS NULL;", (parking3[0],))
+            nombre_places_disponibles_parking3 = cursor.fetchone()[0]
+            cursor.execute("SELECT COUNT(Place.Place_Id) FROM Place WHERE Park_Id = ?", (parking3[0],))
+            nombre_places_totales_parking3 = cursor.fetchone()[0]
+
+        return render_template('home.html', parking1=parking1, parking2=parking2, parking3=parking3, nombre_places_disponibles_parking1=nombre_places_disponibles_parking1, nombre_places_disponibles_parking2=nombre_places_disponibles_parking2, nombre_places_disponibles_parking3=nombre_places_disponibles_parking3, nombre_places_totales_parking1=nombre_places_totales_parking1, nombre_places_totales_parking2=nombre_places_totales_parking2, nombre_places_totales_parking3=nombre_places_totales_parking3)
     else:
         Parking_Name = request.form['Nom_Parking']
         with connect_db() as db:
@@ -123,7 +149,7 @@ def reservation(parking_id):
         IPlaceDispo = [e for e in IdPLaceDispoTuples]
         cursor.execute("INSERT INTO Reservation (Date_Debut_Reservation, Date_Fin_Reservation, User_Id, Place_Id) VALUES (?, ?, ?, ?)", (datetime.now(), datetime.now() + timedelta(hours=3), session['user_id'], IPlaceDispo[0]))
        
-    return render_template('home.html')
+    return redirect(url_for('home'))
 
 
 

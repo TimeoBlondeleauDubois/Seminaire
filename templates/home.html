@@ -25,11 +25,11 @@
                         <img class="premium" src="../static/Picture/Crown.svg" alt="logo">
                     </a>
                     <div class="cardcontainer">
-                        <a href="/detailparking" class="card">
+                        <a href="/detailparking/{{parking1[0]}}" class="card">
                             <div class="leftcontainer">
-                                <h2 class="cardtitle">Parking de la pleine</h2>
-                                <p class="cardparagraph">Allée des pleine</p>
-                                <p class="cardnbplace"><span id="green">331</span> sur 500</p>
+                                <h2 class="cardtitle">{{ parking1[1] }}</h2>
+                                <p class="cardparagraph">{{ parking1[2] }}</p>
+                                <p class="cardnbplace"><span id="green">{{ nombre_places_disponibles_parking1 }}</span> sur {{ nombre_places_totales_parking1 }}</p>
                                 <div class="cardpicturecontainer">
                                     <img class="cardpicture" src="../static/Picture/handicap.svg" alt="handicap">
                                     <img class="cardpicture" src="../static/Picture/camera.svg" alt="camera">
@@ -45,11 +45,11 @@
                                 <p class="nbavis">52 avis</p>
                             </div>
                         </a>
-                        <a href="#" class="card">
+                        <a href="/detailparking/{{parking2[0]}}" class="card">
                             <div class="leftcontainer">
-                                <h2 class="cardtitle">Parking du bois</h2>
-                                <p class="cardparagraph">Allée des bois</p>
-                                <p class="cardnbplace"><span id="orange">100</span> sur 500</p>
+                                <h2 class="cardtitle">{{ parking2[1] }}</h2>
+                                <p class="cardparagraph">{{ parking2[2] }}</p>
+                                <p class="cardnbplace"><span id="orange">{{ nombre_places_disponibles_parking2 }}</span> sur {{ nombre_places_totales_parking2 }}</p>
                                 <div class="cardpicturecontainer">
                                     <img class="cardpicture" src="../static/Picture/handicap.svg" alt="handicap">
                                     <img class="cardpicture" src="../static/Picture/camera.svg" alt="camera">
@@ -64,11 +64,11 @@
                                 <p class="nbavis">132 avis</p>
                             </div>
                         </a>
-                        <a href="#" class="card">
+                        <a href="/detailparking/{{parking3[0]}}" class="card">
                             <div class="leftcontainer">
-                                <h2 class="cardtitle">Parking de la Meuse</h2>
-                                <p class="cardparagraph">Allée des brebis</p>
-                                <p class="cardnbplace"><span id="red">20</span> sur 500</p>
+                                <h2 class="cardtitle">{{ parking3[1] }}</h2>
+                                <p class="cardparagraph">{{ parking3[2] }}</p>
+                                <p class="cardnbplace"><span id="red">{{ nombre_places_disponibles_parking3 }}</span> sur {{ nombre_places_totales_parking3 }}</p>
                                 <div class="cardpicturecontainer">
                                     <img class="cardpicture" src="../static/Picture/handicap.svg" alt="handicap">
                                     <img class="cardpicture" src="../static/Picture/camera.svg" alt="camera">
