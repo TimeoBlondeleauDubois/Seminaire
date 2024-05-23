@@ -95,22 +95,20 @@
 .wrapper {
     margin-left: auto;
     margin-right: auto;
-    background-color: blue;
 }
 
 .wrappercontainer {
     margin-left: 8px;
     margin-right: 8px;
-    background-color: red;
 }
 
 .title {
     font-size: 35px;
     color: #2EAEE5;
+    margin-bottom: 20px;
 }
 
 .leftcontainer {
-    background-color: orange;
     width: 55%;
     margin-left: 20px;
 }
@@ -123,6 +121,7 @@
 .container {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
 }
 
 .information {
@@ -132,4 +131,34 @@
 
 .parkingpicture {
     width: 100%;
+}
+
+.ouverture {
+    color: #2EAEE5;
+}
+
+.nbdeplace {
+    color: #606060;
+}
+
+.paragraph {
+    margin-bottom: 10px;
+}
+
+.parkingpicture {
+    margin-top: 20px;
+    margin-bottom: 20px;
+   /* max-width: 600px;
+    max-height: auto;*/
+}
+
+.picture {
+    margin-right: 10px;
+    min-width: 40px;
+    min-height: auto;
+}
+
+.picturecontainer {
+    display: flex;
+    justify-content: flex-end;
 }
