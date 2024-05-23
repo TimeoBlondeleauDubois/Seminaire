@@ -47,7 +47,6 @@ def signup():
             error = 'Nom d\'utilisateur déjà pris'
     return render_template('signup.html', error=error)
 
-
 #home
 @app.route('/home', methods=['GET','POST'])
 def home():
@@ -59,11 +58,21 @@ def home():
             cursor = db.cursor()
             cursor.execute("SELECT * FROM Parking WHERE Ville_Parking LIKE ?", (Parking_Name + '%',))
             Infos_parking = cursor.fetchall()
+            IdS = []
+            nombres_places_disponibles = []  
+            nombres_places_totales = []
+            for Info_Parking in Infos_parking:   
+                cursor.execute("SELECT COUNT(Place.Place_Id) FROM Place LEFT JOIN Reservation ON Place.Place_Id = Reservation.Place_Id AND Reservation.Date_Fin_Reservation >= datetime('now') WHERE Place.Park_Id = ? AND Reservation.Place_Id IS NULL;", (Info_Parking[0],))
+                nombre_places_disponibles_parking = cursor.fetchone()[0]
+                nombres_places_disponibles.append(nombre_places_disponibles_parking)  
+                cursor.execute("SELECT COUNT(Place.Place_Id) FROM Place WHERE Park_Id = ?", (Info_Parking[0],))
+                nombre_places_totales_parking = cursor.fetchone()[0]
+                nombres_places_totales.append(nombre_places_totales_parking)
         if Infos_parking is None:
             flash('Aucun parking trouvé')
             return render_template('home.html')
-        return render_template('listerecherche.html', Infos_parking=Infos_parking)
-        
+        return render_template('listerecherche.html', Infos_parking=Infos_parking, IdS=IdS, nombres_places_disponibles=nombres_places_disponibles, nombres_places_totales=nombres_places_totales)  # Passez les listes au modèle
+
 
 def check_credentials(username, password):
     with connect_db() as db:

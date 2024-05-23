@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomePage</title>
+    <title>Résultats de la recherche</title>
     <link rel="stylesheet" href="/static/reset.css">
     <link rel="stylesheet" href="/static/home.css">
     <link rel="stylesheet" href="/static/global.css">
@@ -16,36 +16,27 @@
     </div>
 </div>
 <body>
-    <h1>Résultats de la recherche</h1>
-    {% if Infos_parking %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Nom Parking</th>
-                    <th>Adresse</th>
-                    <th>Ville</th>
-                    <th>Hauteur Max</th>
-                    <th>Places Handicapées</th>
-                    <th>Sous Surveillance</th>
-                    <th>Couvert</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for parking in Infos_parking %}
-                    <tr>
-                        <td>{{ parking[1] }}</td> <!-- Nom_Parking -->
-                        <td>{{ parking[2] }}</td> <!-- Adresse_Parking -->
-                        <td>{{ parking[3] }}</td> <!-- Ville_Parking -->
-                        <td>{{ parking[4] }}</td> <!-- Hauteur_max -->
-                        <td>{{ parking[5] }}</td> <!-- A_Places_handicapees -->
-                        <td>{{ "Oui" if parking[6] else "Non" }}</td> <!-- Est_Sous_Surveillance -->
-                        <td>{{ "Oui" if parking[7] else "Non" }}</td> <!-- Est_Couvert -->
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>Aucun parking trouvé</p>
-    {% endif %}
+<h1>Résultats de la recherche</h1>
+{% if Infos_parking %}
+    <ul>
+        {% for parking in Infos_parking %}
+            <li>
+                <strong>Nom Parking:</strong> {{ parking[1] }}<br>
+                <strong>Adresse:</strong> {{ parking[2] }}<br>
+                <strong>Ville:</strong> {{ parking[3] }}<br>
+                <strong>Hauteur Max:</strong> {{ parking[4] }}<br>
+                <strong>Places Handicapées:</strong> {{ "Oui" if parking[5] else "Non" }}<br>
+                <strong>Sous Surveillance:</strong> {{ "Oui" if parking[6] else "Non" }}<br>
+                <strong>Couvert:</strong> {{ "Oui" if parking[7] else "Non" }}<br>
+                <strong>Nombre de places disponibles:</strong> {{ nombres_places_disponibles[loop.index0] }}<br>
+                <strong>Nombre Total de Places:</strong> {{ nombres_places_totales[loop.index0] }}<br>
+                <br>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Aucun parking trouvé</p>
+{% endif %}
+
 </body>
 </html>
