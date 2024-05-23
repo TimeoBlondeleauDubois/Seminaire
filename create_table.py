@@ -72,11 +72,11 @@ cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('C3', 3);")
 cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('C4', 3);")
 cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('C5', 3);")
 
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('D1', 4);")
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('D2', 4);")
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('D3', 4);")
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('D4', 4);")
-cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('D5', 4);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('D1', 4);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('D2', 4);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('D3', 4);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('D4', 4);")
+# cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('D5', 4);")
 
 cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('E1', 5);")
 cursor.execute("INSERT INTO Place (Nom_Place, Park_Id) VALUES ('E2', 5);")
@@ -87,5 +87,9 @@ cursor.execute("INSERT INTO Reservation (Date_Debut_Reservation, Date_Fin_Reserv
 cursor.execute("INSERT INTO Reservation (Date_Debut_Reservation, Date_Fin_Reservation, User_Id, Place_Id) VALUES ('2024-05-26 09:00', '2024-06-26 17:00', 2, 2);")
 cursor.execute("INSERT INTO Reservation (Date_Debut_Reservation, Date_Fin_Reservation, User_Id, Place_Id) VALUES ('2024-04-26 09:00', '2024-04-26 17:00', 2, 16);")
 cursor.execute("INSERT INTO Reservation (Date_Debut_Reservation, Date_Fin_Reservation, User_Id, Place_Id) VALUES ('2024-04-26 09:00', '2025-04-26 17:00', 2, 16);")
+
+
+for i in range(1, 30):
+    cursor.execute(f"INSERT INTO Place (Nom_Place, Park_Id) VALUES ('D{i}', 4);")
 
 connection.commit()

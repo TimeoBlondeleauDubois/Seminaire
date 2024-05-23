@@ -66,18 +66,36 @@ def home():
             nombre_places_disponibles_parking1 = cursor.fetchone()[0]
             cursor.execute("SELECT COUNT(Place.Place_Id) FROM Place WHERE Park_Id = ?", (parking1[0],))
             nombre_places_totales_parking1 = cursor.fetchone()[0]
+            if nombre_places_disponibles_parking1 < 25:
+                color1 = 'red'
+            elif nombre_places_disponibles_parking1 < 50:
+                color1 = 'orange'
+            else:
+                color1 = 'green'
 
             cursor.execute("SELECT COUNT(Place.Place_Id) FROM Place LEFT JOIN Reservation ON Place.Place_Id = Reservation.Place_Id AND Reservation.Date_Fin_Reservation >= datetime('now') WHERE Place.Park_Id = ? AND Reservation.Place_Id IS NULL;", (parking2[0],))
             nombre_places_disponibles_parking2 = cursor.fetchone()[0]
             cursor.execute("SELECT COUNT(Place.Place_Id) FROM Place WHERE Park_Id = ?", (parking2[0],))
             nombre_places_totales_parking2 = cursor.fetchone()[0]
+            if nombre_places_disponibles_parking2 < 25:
+                color2 = 'red'
+            elif nombre_places_disponibles_parking2 < 50:
+                color2 = 'orange'
+            else:
+                color2 = 'green'
 
             cursor.execute("SELECT COUNT(Place.Place_Id) FROM Place LEFT JOIN Reservation ON Place.Place_Id = Reservation.Place_Id AND Reservation.Date_Fin_Reservation >= datetime('now') WHERE Place.Park_Id = ? AND Reservation.Place_Id IS NULL;", (parking3[0],))
             nombre_places_disponibles_parking3 = cursor.fetchone()[0]
             cursor.execute("SELECT COUNT(Place.Place_Id) FROM Place WHERE Park_Id = ?", (parking3[0],))
             nombre_places_totales_parking3 = cursor.fetchone()[0]
+            if nombre_places_disponibles_parking3 < 25:
+                color3 = 'red'
+            elif nombre_places_disponibles_parking3 < 50:
+                color3 = 'orange'
+            else:
+                color3 = 'green'
 
-        return render_template('home.html', parking1=parking1, parking2=parking2, parking3=parking3, nombre_places_disponibles_parking1=nombre_places_disponibles_parking1, nombre_places_disponibles_parking2=nombre_places_disponibles_parking2, nombre_places_disponibles_parking3=nombre_places_disponibles_parking3, nombre_places_totales_parking1=nombre_places_totales_parking1, nombre_places_totales_parking2=nombre_places_totales_parking2, nombre_places_totales_parking3=nombre_places_totales_parking3)
+        return render_template('home.html', parking1=parking1, parking2=parking2, parking3=parking3, nombre_places_disponibles_parking1=nombre_places_disponibles_parking1, nombre_places_disponibles_parking2=nombre_places_disponibles_parking2, nombre_places_disponibles_parking3=nombre_places_disponibles_parking3, nombre_places_totales_parking1=nombre_places_totales_parking1, nombre_places_totales_parking2=nombre_places_totales_parking2, nombre_places_totales_parking3=nombre_places_totales_parking3, color1=color1, color2=color2, color3=color3)
     else:
         Parking_Name = request.form['Nom_Parking']
         with connect_db() as db:
