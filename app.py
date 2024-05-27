@@ -3,6 +3,7 @@ from bcrypt import hashpw, gensalt
 import sqlite3, random
 from datetime import datetime, timedelta
 from flask import flash
+import os
 
 app = Flask(__name__)
 app.secret_key = 'b_5#y2L"F4Q8z\n\xec]/'
@@ -15,7 +16,7 @@ def loginpage():
     return render_template('login.html')
 
 def connect_db():
-    db_path = 'ParkEase.db'
+    db_path = os.path.join(os.path.dirname(__file__), 'ParkEase.db')
     return sqlite3.connect(db_path)
 
 #Login
@@ -31,7 +32,6 @@ def login():
             error = 'Nom d\'utilisateur ou mot de passe incorrect'
     return render_template('login.html', error=error)
 
-#Signup
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     error = None
@@ -39,13 +39,15 @@ def signup():
         username = request.form['username']
         password = request.form['password']
         immatriculation = request.form['immatriculation']
-        print(f"Avant create_user: {username}, {password}")
+        print(f"Tentative de création d'utilisateur : {username}")
         if create_user(username, password, immatriculation):
-            print("Après create_user: Utilisateur créé avec succès")
+            print(f"Utilisateur {username} créé avec succès")
             return redirect(url_for('login'))
         else:
+            print(f"Échec de la création de l'utilisateur : {username}")
             error = 'Nom d\'utilisateur déjà pris'
     return render_template('signup.html', error=error)
+
 
 #home
 @app.route('/home', methods=['GET','POST'])
@@ -131,18 +133,23 @@ def check_credentials(username, password):
             return user_id
     return None
 
-#Creer un utilisateur
+
 def create_user(username, password, immatriculation):
     try:
-        hashed_password = hashpw(password.encode('utf-8'), gensalt())
         with connect_db() as db:
             cursor = db.cursor()
+            cursor.execute("SELECT COUNT(*) FROM User WHERE Nom_Utilisateur = ?", (username,))
+            if cursor.fetchone()[0] > 0:
+                print(f"Erreur : Le nom d'utilisateur {username} est déjà pris")
+                return False
+            hashed_password = hashpw(password.encode('utf-8'), gensalt())
             cursor.execute("INSERT INTO User (Nom_Utilisateur, Mot_De_Passe, immatriculation) VALUES (?, ?, ?)", (username, hashed_password, immatriculation))
-        print(f"Utilisateur {username} créé avec succès")
+            print(f"Utilisateur {username} créé avec succès")
         return True
     except sqlite3.Error as e:
         print(f"Erreur lors de la création de l'utilisateur : {e}")
         return False
+
     
 @app.route('/detailparking/<int:parking_id>')
 def detailparking(parking_id):
