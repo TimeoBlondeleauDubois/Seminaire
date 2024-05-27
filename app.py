@@ -6,7 +6,7 @@ from flask import flash
 import os
 
 app = Flask(__name__)
-app.secret_key = 'b_5#y2L"F4Q8z\n\xec]/'
+app.secret_key = os.environ.get('FLASK_SECRET_KEY')
 
 connection = sqlite3.connect('ParkEase.db')
 cursor = connection.cursor()
